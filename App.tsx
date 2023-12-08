@@ -1,51 +1,38 @@
 import React from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ListViewDemo from './components/ListViewDemo';
-// import FormDemo from './components/FormDemo';
+import FormDemo from './components/FormDemo';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <View>
-      <View style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={{
-            uri: 'https://avatars.githubusercontent.com/u/87645745?v=4',
-          }}
-        />
-        <Text style={styles.navTitle}>Hardik Desai</Text>
-      </View>
-      <View style={styles.bodyContainer}>
-        {/* <FormDemo /> */}
-        <ListViewDemo />
-      </View>
-    </View>
+    <>
+      <Navbar />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            options={{headerShown: false}}
+            component={Home}
+          />
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="Form"
+            component={FormDemo}
+          />
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="ECommerce"
+            component={ListViewDemo}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#20232A',
-    paddingHorizontal: 5,
-    paddingVertical: 10,
-    flexDirection: 'row-reverse',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  bodyContainer: {
-    margin: 10,
-  },
-  logo: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  navTitle: {
-    fontSize: 20,
-    color: '#fff',
-    fontWeight: 'bold',
-    fontFamily: 'Verdana',
-  },
-});
 
 export default App;

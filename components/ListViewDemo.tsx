@@ -20,7 +20,7 @@ const AddButton = ({onPress, title}: {onPress: () => void; title: string}) => (
 const ListViewDemo = () => {
   return (
     <>
-      <View>
+      <View style={headStyles.container}>
         <Text style={headStyles.head}>Everything in your door step</Text>
         {/* <View style={heroStyles.hero}>
           <ImageBackground
@@ -113,6 +113,7 @@ const cardStyles = StyleSheet.create({
   },
   imgContainer: {
     marginHorizontal: 20,
+    marginTop: 10,
     position: 'relative',
   },
   img: {
@@ -163,6 +164,9 @@ const cardStyles = StyleSheet.create({
 });
 
 const headStyles = StyleSheet.create({
+  container: {
+    margin: 10,
+  },
   head: {
     fontSize: 30,
     fontWeight: '700',
